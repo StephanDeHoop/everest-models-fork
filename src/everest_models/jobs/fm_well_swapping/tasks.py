@@ -110,11 +110,10 @@ def clean_data(options: Namespace) -> Data:
         cases=validate_exist(options.cases or options.config.cases(), "cases"),
         output=None if options.lint else validate_exist(options.output, "output"),
         state_duration=validate_exist(
-            options.config.constraints.rescale(
                 options.constraints["state_duration"]
                 if options.constraints
                 else iteration_capacity
-            ),
+            ,
             "state_duration",
         ),
         errors=errors,
