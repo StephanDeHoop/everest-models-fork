@@ -50,9 +50,10 @@ class Priorities(ModelConfig):
 
 
 class ConfigSchema(ModelConfig):
-    constraints: Annotated[
+    constraints: Optional[Annotated[
         Constraints,
         Field(
+            default=None,
             description=dedent(
                 """\
                 Make sure the following are present in the Everest configuration file:
@@ -74,7 +75,7 @@ class ConfigSchema(ModelConfig):
             """
             )
         ),
-    ]
+    ]] = None
     priorities: Annotated[
         Priorities,
         Field(
